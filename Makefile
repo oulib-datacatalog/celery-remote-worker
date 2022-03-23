@@ -6,6 +6,7 @@ export RABBITMQ_DEFAULT_PASS
 export RABBITMQ_DEFAULT_VHOST
 export MONGO_USERNAME
 export MONGO_PASSWORD
+export MONGO_DB
 
 SHELL := /bin/bash
 
