@@ -21,8 +21,12 @@ ssl:
 	cp $(CYBERCOMMONS_PATH)/dc_config/ssl/backend/client/mongodb.pem ssl/.
 	cp $(CYBERCOMMONS_PATH)/dc_config/ssl/backend/testca/cacert.pem ssl/.
 
+$(GIT_REPO_NAME):
+	git submodule add --force -b $(GIT_REPO_BRANCH) $(GIT_REPO_URL)
+	git submodule foreach git pull origin $(GIT_REPO_BRANCH)
+
 .PHONY: init
-init: venv ssl
+init: venv ssl $(GIT_REPO_NAME)
 
 .PHONY: run
 run:
@@ -33,4 +37,9 @@ clean:
 	rm -rf ssl
 	rm -rf venv
 	rm -rf __pycache__
+	git rm -f $(GIT_REPO_NAME)
+	git rm -f .gitmodules
 
+.PHONY: shell
+shell:
+	$$SHELL && source venv/bin/activate

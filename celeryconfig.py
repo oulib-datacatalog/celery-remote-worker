@@ -1,5 +1,6 @@
 import os
 import ssl
+import logging
 
 # Refer to Celery's configuration documentation for details on these settings.
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html
@@ -29,5 +30,7 @@ mongodb_backend_settings = {
     "database": os.environ.get('MONGO_DB', "cybercom"),
     "taskmeta_collection": os.environ.get('MONGO_TOMBSTONE_COLLECTION', "tombstone")
 }
-
-imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
+try:
+    imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
+except AttributeError:
+    logging.error("CELERY_IMPORTS env variable not set! Try running from Makefile - make run")
