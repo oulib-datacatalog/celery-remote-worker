@@ -34,3 +34,9 @@ try:
     imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
 except AttributeError:
     logging.error("CELERY_IMPORTS env variable not set! Try running from Makefile - make run")
+
+
+ISLANDORA_DRUPAL_ROOT = ""
+ISLANDORA_FQDN = ""
+PATH = ""
+CYBERCOMMONS_TOKEN = ""
