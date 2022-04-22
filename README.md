@@ -26,3 +26,6 @@ This is an example Celery worker that can be used as a starting point for deploy
     ```sh
     make clean
     ```
+
+## TODO
+* Add cybercom.cfg file pointing to local dev host
