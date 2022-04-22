@@ -29,3 +29,5 @@ This project is intended to assist with creating a local development and testing
     ```sh
     make clean
     ```
+## TODO
+* Update variable in celeryconfig.py
