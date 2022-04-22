@@ -31,3 +31,19 @@ mongodb_backend_settings = {
 }
 
 imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
+
+
+ALMA_KEY = ''
+ALMA_RW_KEY = ''
+ETD_NOTIFICATION_EMAIL = ''
+ALMA_NOTIFICATION_EMAIL = ''
+REST_ENDPOINT = ''
+IR_NOTIFICATION_EMAIL = ''
+QUEUE_NAME = ''
+DSPACE_BINARY = ''
+DSPACE_FQDN = ''
+DB_USERNAME = ''
+DB_PASSWORD = ''
+DB_NAME = ''
+DB_HOST = ''
+DB_PORT = ''
