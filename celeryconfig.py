@@ -1,6 +1,5 @@
 import os
 import ssl
-import logging
 
 # Refer to Celery's configuration documentation for details on these settings.
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html
@@ -24,19 +23,11 @@ accept_content = ['json']
 SSL_PATH = os.environ.get('SSL_PATH')
 MONGO_USERNAME = os.environ.get('MONGO_USERNAME')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD')
-result_backend = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@localhost:27017/?ssl=true&ssl_ca_certs=ssl/cacert.pem&ssl_certfile=ssl/mongodb.pem" 
+result_backend = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@localhost:27017/?ssl=true&tlsCAFile=ssl/cacert.pem&tlsCertificateKeyFile=ssl/mongodb.pem" 
 
 mongodb_backend_settings = {
     "database": os.environ.get('MONGO_DB', "cybercom"),
     "taskmeta_collection": os.environ.get('MONGO_TOMBSTONE_COLLECTION', "tombstone")
 }
-try:
-    imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
-except AttributeError:
-    logging.error("CELERY_IMPORTS env variable not set! Try running from Makefile - make run")
 
-
-ISLANDORA_DRUPAL_ROOT = ""
-ISLANDORA_FQDN = ""
-PATH = ""
-CYBERCOMMONS_TOKEN = ""
+imports = tuple(os.environ.get('CELERY_IMPORTS').split(','))
