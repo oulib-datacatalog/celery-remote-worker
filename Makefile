@@ -27,6 +27,18 @@ $(GIT_REPO_NAME):
 
 .PHONY: init
 init: venv ssl $(GIT_REPO_NAME)
+	mkdir /tmp/remote_bagit_src
+	mkdir /tmp/remote_bagit_src/preservation
+	mkdir /tmp/remote_bagit_src/private
+	mkdir /tmp/remote_bagit_src/shareok
+	mkdir /tmp/local_bagit_src
+	mkdir /tmp/local_bagit_src/preservation
+	mkdir /tmp/local_bagit_src/private
+	mkdir /tmp/local_bagit_src/shareok
+	mkdir /tmp/remote_bagit_dest
+	mkdir /tmp/remote_bagit_dest/preservation
+	mkdir /tmp/remote_bagit_dest/private
+	mkdir /tmp/remote_bagit_dest/shareok
 
 .PHONY: run
 run:
@@ -37,6 +49,9 @@ clean:
 	rm -rf ssl
 	rm -rf venv
 	rm -rf __pycache__
+	rm -rf /tmp/remote_bagit_src
+	rm -rf /tmp/local_bagit_src 
+	rm -rf /tmp/remote_bagit_dest
 	git rm -f $(GIT_REPO_NAME)
 	git rm -f .gitmodules
 
