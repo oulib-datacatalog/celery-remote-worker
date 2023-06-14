@@ -1,4 +1,0 @@
-[submodule "oulibq"]
-	path = oulibq
-	url = https://github.com/oulib-datacatalog/oulibq
-	branch = dev_refactor
